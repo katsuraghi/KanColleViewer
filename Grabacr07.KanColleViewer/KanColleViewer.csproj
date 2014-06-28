@@ -119,6 +119,7 @@
     </ApplicationDefinition>
     <Compile Include="Composition\AggregateNotifier.cs" />
     <Compile Include="Composition\INotifier.cs" />
+    <Compile Include="Composition\IToolPlugin.cs" />
     <Compile Include="Composition\NotifyType.cs" />
     <Compile Include="Composition\PluginHost.cs" />
     <Compile Include="Models\BrowserZoomFactor.cs" />
