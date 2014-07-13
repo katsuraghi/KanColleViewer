@@ -10,6 +10,8 @@ namespace Grabacr07.KanColleViewer.Composition
 	/// </summary>
 	public interface IToolPlugin : IPlugin
 	{
+		string ToolName { get; }
+
 		object GetToolView();
 	}
 }

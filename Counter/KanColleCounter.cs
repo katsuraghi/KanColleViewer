@@ -13,6 +13,11 @@ namespace Counter
 	[Export(typeof(IToolPlugin))]
 	public class KanColleCounter : IToolPlugin
 	{
+		public string ToolName
+		{
+			get { return "Counters"; }
+		}
+
 		public object GetSettingsView()
 		{
 			return null;
