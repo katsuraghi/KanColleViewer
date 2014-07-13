@@ -80,6 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Counters.cs" />
+    <Compile Include="CounterView.xaml.cs">
+      <DependentUpon>CounterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CounterViewModel.cs" />
     <Compile Include="KanColleCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -130,6 +134,12 @@
       <Project>{0af0b9ff-d981-4d0f-a41f-c3ab6fe2f16d}</Project>
       <Name>MetroRadiance</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CounterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

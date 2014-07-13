@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="Counter.CounterView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:wrapper="clr-namespace:Grabacr07.KanColleWrapper;assembly=KanColleWrapper"
+			 xmlns:controls="clr-namespace:Grabacr07.Desktop.Metro.Controls;assembly=Desktop.Metro"
+			 xmlns:counter="clr-namespace:Counter"
+			 mc:Ignorable="d"
+			 d:DataContext="{d:DesignInstance counter:CounterViewModel}"
+			 d:DesignHeight="300"
+			 d:DesignWidth="300">
+	<DockPanel>
+		<TextBlock DockPanel.Dock="Bottom"
+				   Text="※アプリケーションが起動している間に発生した回数のみをカウントしています。"
+				   TextWrapping="Wrap"
+				   Margin="8" />
+		
+		<ItemsControl ItemsSource="{Binding Counters}">
+			<ItemsControl.Template>
+				<ControlTemplate TargetType="{x:Type ItemsControl}">
+					<ScrollViewer HorizontalScrollBarVisibility="Disabled"
+								  VerticalScrollBarVisibility="Auto">
+						<StackPanel IsItemsHost="True"
+									Margin="4" />
+					</ScrollViewer>
+				</ControlTemplate>
+			</ItemsControl.Template>
+			<ItemsControl.Resources>
+				<DataTemplate DataType="{x:Type wrapper:SupplyCounter}">
+					<Border Margin="4"
+							Padding="0,0,0,8"
+							BorderThickness="0,0,0,1"
+							BorderBrush="{DynamicResource BorderBrushKey}">
+						<DockPanel>
+							<controls:CallMethodButton DockPanel.Dock="Right"
+													   Content="リセット"
+													   MethodName="Reset" />
+							<TextBlock>
+										<Run Text="艦娘に補給した回数:" />
+										<Run Text="{Binding Count}"
+											 Style="{DynamicResource PickupTextElementStyleKey}" />
+							</TextBlock>
+						</DockPanel>
+					</Border>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type wrapper:ItemDestroyCounter}">
+					<Border Margin="4"
+							Padding="0,0,0,8"
+							BorderThickness="0,0,0,1"
+							BorderBrush="{DynamicResource BorderBrushKey}">
+						<DockPanel>
+							<controls:CallMethodButton DockPanel.Dock="Right"
+													   Content="リセット"
+													   MethodName="Reset" />
+							<TextBlock>
+										<Run Text="装備を破棄した回数:" />
+										<Run Text="{Binding Count}"
+											 Style="{DynamicResource PickupTextElementStyleKey}" />
+							</TextBlock>
+						</DockPanel>
+					</Border>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type wrapper:MissionCounter}">
+					<Border Margin="4"
+							Padding="0,0,0,8"
+							BorderThickness="0,0,0,1"
+							BorderBrush="{DynamicResource BorderBrushKey}">
+						<DockPanel>
+							<controls:CallMethodButton DockPanel.Dock="Right"
+													   Content="リセット"
+													   MethodName="Reset" />
+							<TextBlock>
+										<Run Text="遠征に成功した回数:" />
+										<Run Text="{Binding Count}"
+											 Style="{DynamicResource PickupTextElementStyleKey}" />
+							</TextBlock>
+						</DockPanel>
+					</Border>
+				</DataTemplate>
+			</ItemsControl.Resources>
+		</ItemsControl>
+	</DockPanel>
+</UserControl>
